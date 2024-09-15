@@ -69,5 +69,19 @@ const products = [
     price: 20,
     discount: 40,
   },
+  {
+    id: 10,
+    image: "./assets/img/p3.png",
+    title: "Alpha All-Purpose Gen Z",
+    price: 20,
+    discount: 30,
+  },
+  {
+    id: 11,
+    image: "./assets/img/p8.png",
+    title: "Quick Pace V2",
+    price: 100,
+    discount: 10,
+  },
 ];
 localStorage.setItem("product", JSON.stringify(products));

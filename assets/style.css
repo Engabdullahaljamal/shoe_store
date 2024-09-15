@@ -256,13 +256,7 @@ body {
   cursor: pointer;
 }
 
-.add_before {
-  display: none;
-  color: #ff6d59;
-  font-size: 12px;
-}
-
-.first_add {
+.add {
   display: none;
   color: rgb(10, 189, 10);
   font-size: 12px;

@@ -27,8 +27,7 @@ products.forEach(element => {
               
 
             </div>
-            <p class="first_add">Added successfully ✅</p>
-            <p class="add_before">you added this item before!</p>
+            <p class="add">Added successfully ✅</p>
             <button onclick="add_product(${element.id})">Add to card</button>
     </div>`
 
@@ -46,8 +45,8 @@ products.forEach(element => {
                 <p>$${element.price}</p>
              
             </div>
-            <p class="first_add">Added successfully ✅ </p>
-            <p class="add_before">you added this item before!</p>
+            <p class="add">Added successfully ✅ </p>
+           
             <button onclick="add_product(${element.id})">Add to card</button>
     </div>`}
 });
@@ -58,10 +57,9 @@ const my_cart_notification = document.querySelector('#my_cart div')
 const overlay = document.querySelector('.overlay')
 const popup = document.querySelector('.pop_up')
 const popup_body = document.querySelector('.pop_up_body')
-
-const add_before = document.querySelectorAll('.add_before')
-const first_add = document.querySelectorAll('.first_add')
+const add = document.querySelectorAll('.add')
 const total_price = document.getElementById('total_price')
+// const body = document.querySelector('body')
 
 
 
@@ -78,41 +76,33 @@ const add_product = (id) => {
 
     products.forEach(
         p => {
-            first_add[p.id].style.display = 'none';
-            add_before[p.id].style.display = 'none';
+            add[p.id].style.display = 'none';
+
         }
     )
 
     my_product = JSON.parse(localStorage.getItem("my_product")) ? my_product : []
 
-    if (!my_product.includes(product)) {
-
-        my_product.push(product)
-
-        notification_number++
-        my_cart_notification.innerHTML = `${notification_number}`
-        localStorage.setItem("notification_number", JSON.stringify(notification_number));
-        localStorage.setItem("my_product", JSON.stringify(my_product));
-        first_add[product.id].style.display = "block"
-        setTimeout(function () {
-            first_add[product.id].style.display = 'none';
-        }, 3000);
-
-    } else {
-
-        first_add[product.id].style.display = "none"
-        add_before[product.id].style.display = " block"
-        setTimeout(function () {
-            add_before[product.id].style.display = 'none';
-        }, 3000);
-
-        // console.log(my_product)
-    }
 
 
+    my_product.push(product)
 
+    notification_number++
+    my_cart_notification.innerHTML = `${notification_number}`
+    localStorage.setItem("notification_number", JSON.stringify(notification_number));
+    localStorage.setItem("my_product", JSON.stringify(my_product));
+    add[product.id].style.display = "block"
+    setTimeout(function () {
+        add[product.id].style.display = 'none';
+    }, 3000);
 
+    // console.log(my_product)
 }
+
+
+
+
+
 
 
 
@@ -128,6 +118,8 @@ my_cart.addEventListener('click', (event) => {
 
     popup.style.top = `${scrollY + (viewportHeight - popupHeight - 180) / 2}px`
     overlay.style.display = "flex"
+    // overlay.style.hight = "200vh"
+    // body.style.height = "max-content"
     show_product_cart()
 
 
